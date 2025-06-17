@@ -4,14 +4,9 @@ import numpy as np
 import pickle
 
 # Load model dan komponen terkait
-with open('model_xgboost1.pkl', 'rb') as file:
-    model = pickle.load(file)
 
-with open('tinggi_mean.pkl', 'rb') as file:
-    tinggi_mean = pickle.load(file)
+model = pickle.load(open('model_xgboost1.pkl', 'rb'))
 
-with open('fitur_model.pkl', 'rb') as file:
-    fitur_model = pickle.load(file)
 
 # Judul aplikasi
 st.title("Prediksi Stunting pada Balita")
