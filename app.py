@@ -18,13 +18,11 @@ tinggi_badan = st.number_input("Tinggi Badan (cm)", min_value=30.0, max_value=12
 
 # Proses input
 if st.button("Prediksi"):
+    predict = model.predict(
+        [[umur, berat_badan, tinggi_badan]]
+    )
+ st.write("Probabilitas:")
+        st.write({f"{model.classes_[i]}": f"{round(prob * 100, 2)}%" for i, prob in enumerate(probabilitas)})
  
 
-    try:
-        probabilitas = model.predict_proba(data_input)[0]
-        st.success(f"Prediksi Status Gizi: **{prediksi}**")
-        st.write("Probabilitas:")
-        st.write({f"{model.classes_[i]}": f"{round(prob * 100, 2)}%" for i, prob in enumerate(probabilitas)})
-    except AttributeError:
-        # Jika model tidak mendukung predict_proba (seperti beberapa model XGBoost), tampilkan prediksi saja
-        st.success(f"Prediksi Status Gizi: **{prediksi}**")
+  
