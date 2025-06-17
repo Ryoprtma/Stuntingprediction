@@ -5,7 +5,7 @@ import pickle
 
 # Load model dan komponen terkait
 
-model = pickle.load(open('model_xgboost1.pkl', 'rb'))
+model = pickle.load(open('Model_stunting.sav', 'rb'))
 
 
 # Judul aplikasi
