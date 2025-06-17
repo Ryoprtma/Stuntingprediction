@@ -2,7 +2,6 @@ import streamlit as st
 import pandas as pd
 import numpy as np
 import pickle
-import xgboost
 
 # Load model dan komponen terkait
 with open('model_xgboost1.pkl', 'rb') as file:
