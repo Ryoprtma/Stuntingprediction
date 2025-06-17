@@ -6,12 +6,6 @@ import pickle
 # Load model
 model = pickle.load(open('Model_stunting.sav', 'rb'))
 
-# Definisikan nilai tinggi_mean (bisa kamu sesuaikan dengan dataset aslinya)
-tinggi_mean = 85.0  # misalnya rata-rata tinggi badan balita 85 cm
-
-# Definisikan fitur_model sesuai dengan urutan saat pelatihan model
-fitur_model = ['Umur (bulan)', 'Jenis Kelamin', 'Berat Badan (kg)', 'Tinggi Badan (cm)', 'Tinggi di atas rata-rata']
-
 # Judul aplikasi
 st.title("Prediksi Stunting pada Balita")
 st.markdown("Masukkan data berikut untuk mengetahui prediksi status gizi:")
