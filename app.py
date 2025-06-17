@@ -20,13 +20,6 @@ tinggi_badan = st.number_input("Tinggi Badan (cm)", min_value=30.0, max_value=12
 if st.button("Prediksi"):
  
 
-   
-    # Pastikan urutan kolom sama dengan saat training
-    data_input = data_input[fitur_model]
-
-    # Prediksi
-    prediksi = model.predict(data_input)[0]
-
     try:
         probabilitas = model.predict_proba(data_input)[0]
         st.success(f"Prediksi Status Gizi: **{prediksi}**")
