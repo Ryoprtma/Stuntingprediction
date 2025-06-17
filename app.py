@@ -20,15 +20,7 @@ tinggi_badan = st.number_input("Tinggi Badan (cm)", min_value=30.0, max_value=12
 if st.button("Prediksi"):
  
 
-    # Buat DataFrame input
-    data_input = pd.DataFrame([{
-        'Umur (bulan)': umur,
-        'Jenis Kelamin': jk_numeric,
-        'Berat Badan (kg)': berat_badan,
-        'Tinggi Badan (cm)': tinggi_badan,
-        'Tinggi di atas rata-rata': tinggi_di_atas_rata
-    }])
-
+   
     # Pastikan urutan kolom sama dengan saat training
     data_input = data_input[fitur_model]
 
