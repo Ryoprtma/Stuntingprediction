@@ -21,7 +21,7 @@ if st.button("Prediksi"):
     predict = model.predict(
         [[umur, berat_badan, tinggi_badan]]
     )
-    st.write('Estimasi harga mobil bekas dalam pounds: ', predict)
+    st.write('predik: ', predict)
  
         
 
