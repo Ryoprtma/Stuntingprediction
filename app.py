@@ -18,11 +18,7 @@ tinggi_badan = st.number_input("Tinggi Badan (cm)", min_value=30.0, max_value=12
 
 # Proses input
 if st.button("Prediksi"):
-    # Ubah jenis kelamin ke numerik
-    jk_numeric = 1 if jenis_kelamin == 'Laki-laki' else 0
-
-    # Buat fitur 'tinggi di atas rata-rata'
-    tinggi_di_atas_rata = 1 if tinggi_badan > tinggi_mean else 0
+ 
 
     # Buat DataFrame input
     data_input = pd.DataFrame([{
