@@ -21,8 +21,8 @@ if st.button("Prediksi"):
     predict = model.predict(
         [[umur, berat_badan, tinggi_badan]]
     )
- st.write("Probabilitas:")
-        st.write({f"{model.classes_[i]}": f"{round(prob * 100, 2)}%" for i, prob in enumerate(probabilitas)})
+    st.write('Estimasi harga mobil bekas dalam pounds: ', predict)
  
+        
 
   
