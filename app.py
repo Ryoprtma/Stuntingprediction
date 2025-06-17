@@ -3,10 +3,14 @@ import pandas as pd
 import numpy as np
 import pickle
 
-# Load model dan komponen terkait
-
+# Load model
 model = pickle.load(open('Model_stunting.sav', 'rb'))
 
+# Definisikan nilai tinggi_mean (bisa kamu sesuaikan dengan dataset aslinya)
+tinggi_mean = 85.0  # misalnya rata-rata tinggi badan balita 85 cm
+
+# Definisikan fitur_model sesuai dengan urutan saat pelatihan model
+fitur_model = ['Umur (bulan)', 'Jenis Kelamin', 'Berat Badan (kg)', 'Tinggi Badan (cm)', 'Tinggi di atas rata-rata']
 
 # Judul aplikasi
 st.title("Prediksi Stunting pada Balita")
@@ -35,14 +39,17 @@ if st.button("Prediksi"):
         'Tinggi di atas rata-rata': tinggi_di_atas_rata
     }])
 
-    # Sesuaikan urutan fitur agar sama dengan saat training
+    # Pastikan urutan kolom sama dengan saat training
     data_input = data_input[fitur_model]
 
     # Prediksi
     prediksi = model.predict(data_input)[0]
-    probabilitas = model.predict_proba(data_input)[0]
 
-    # Tampilkan hasil
-    st.success(f"Prediksi Status Gizi: **{prediksi}**")
-    st.write("Probabilitas:")
-    st.write({f"{model.classes_[i]}": f"{round(prob * 100, 2)}%" for i, prob in enumerate(probabilitas)})
+    try:
+        probabilitas = model.predict_proba(data_input)[0]
+        st.success(f"Prediksi Status Gizi: **{prediksi}**")
+        st.write("Probabilitas:")
+        st.write({f"{model.classes_[i]}": f"{round(prob * 100, 2)}%" for i, prob in enumerate(probabilitas)})
+    except AttributeError:
+        # Jika model tidak mendukung predict_proba (seperti beberapa model XGBoost), tampilkan prediksi saja
+        st.success(f"Prediksi Status Gizi: **{prediksi}**")
